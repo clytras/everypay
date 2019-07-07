@@ -15,7 +15,7 @@ Yarn:<br>
 
 ### API Keys
 
-Use enviroment variables to setup your gateway account credentials. There is an `.env.example` file you can check and rename. The library expects the folowing enviroment variables:
+Use enviroment variables to setup your gateway account credentials. There is an `.env.example` file you can check and rename. You can use [`dotenv`](https://www.npmjs.com/package/dotenv) package to auto load project root `.env` files. The library expects the folowing enviroment variables:
 
 ```bash
 EVERYPAY_APIENDPOINT="https://sandbox-api.everypay.gr"
