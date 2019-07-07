@@ -192,24 +192,28 @@ describe('Customers', function() {
   });
 
   it('Should create a customer with Card Token', function() {
-    const customerName = faker.name.findName();
-    const customerEmail = faker.internet.email();
-    const customerDescription = faker.name.jobDescriptor();
+    if(createdTokenId) {
+      const customerName = faker.name.findName();
+      const customerEmail = faker.internet.email();
+      const customerDescription = faker.name.jobDescriptor();
 
-    return createCustomer({
-      token: createdTokenId,
-      description: customerDescription,
-      full_name: customerName,
-      email: customerEmail
-    }).then(customer => {
-      expect(customer).to.have.property('token').match(/^cus_/, 'customer id is invalid');
-      expect(customer.is_active).to.be.true;
-      expect(customer.email).to.equal(customerEmail);
-      expect(customer.full_name).to.equal(customerName);
-      expect(customer.cards.count).to.equal(1);
+      return createCustomer({
+        token: createdTokenId,
+        description: customerDescription,
+        full_name: customerName,
+        email: customerEmail
+      }).then(customer => {
+        expect(customer).to.have.property('token').match(/^cus_/, 'customer id is invalid');
+        expect(customer.is_active).to.be.true;
+        expect(customer.email).to.equal(customerEmail);
+        expect(customer.full_name).to.equal(customerName);
+        expect(customer.cards.count).to.equal(1);
 
-      'token' in customer && (customerIdByToken = customer.token);
-    });
+        'token' in customer && (customerIdByToken = customer.token);
+      });
+    } else {
+      this.skip();
+    }
   });
 
   it('Should get a list with customers', function() {

@@ -15,7 +15,7 @@ Yarn:<br>
 
 ### API Keys
 
-Use enviroment variables to setup your gateway account crentials. There is an `.env.example` file you can check and rename. The library expects the folowing enviroment variables:
+Use enviroment variables to setup your gateway account credentials. There is an `.env.example` file you can check and rename. The library expects the folowing enviroment variables:
 
 ```bash
 EVERYPAY_APIENDPOINT="https://sandbox-api.everypay.gr"
@@ -44,7 +44,7 @@ process.env['EVERYPAY_SHARED_KEY'] = functions.config().everypay_sandbox_shared_
 
 ## Usage
 
-Every function return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) than can be either success with a result or fail with an error. When it fails, if the error contains a `endPointError` property, then that reflects an error at the gateway endpoint. You can find the endpoint error structure at the [EveryPay API Reference Errors](https://www.everypay.gr/api-reference/#errors).
+Every function returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) than can be either success with a result or fail with an error. When it fails, if the error contains an `endPointError` property, then that reflects an error at the gateway endpoint. You can find the endpoint error structure at the [EveryPay API Reference Errors](https://www.everypay.gr/api-reference/#errors).
 
 Every function can take an optional custom endpoint URL and/or endpoint key to use. When these parameters are omitted, default enviroment variables used for all keys. This can be usefull when creating tokens at the client and we receive the public key dynamically:
 
@@ -66,11 +66,11 @@ import { createToken } from '@lytrax/everypay/Tokens';
 // This should be called at the client
 
 createToken({
-  card_number: Cards.Success.MasterCard,
-  expiration_year: Cards.ValidYear,
-  expiration_month: Cards.ValidMonth,
-  cvv: Cards.ValidCVV,
-  holder_name: faker.name.findName().toUpperCase()
+  card_number: '5217925525906273',
+  expiration_year: '2022',
+  expiration_month: '05',
+  cvv: '343',
+  holder_name: 'John Doe'
 })
 .then(token => {
   // Success: Store or use the token
