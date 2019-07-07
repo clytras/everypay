@@ -54,7 +54,7 @@ Every function returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/
 
 Every function can take an optional custom endpoint URL and/or endpoint key to use. When these parameters are omitted, default environment variables are used for all keys and endpoint URL. This can be usefull when creating tokens at the client and we receive the public key dynamically:
 
-```Js
+```javascript
 createToken({
   // Will use EVERYPAY_APIENDPOINT environment variable when omitted
   endPointURL: 'https://api.everypay.gr',
@@ -66,7 +66,7 @@ createToken({
 
 ### Create token example
 
-```Js
+```javascript
 import { createToken } from '@lytrax/everypay/Tokens';
 
 // This should be called at the client
@@ -93,7 +93,7 @@ createToken({
 
 ### Create customer using token example (using async/await)
 
-```Js
+```javascript
 import { createCustomer } from '@lytrax/everypay/Customers';
 
 async function myFlow({
