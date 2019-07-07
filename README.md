@@ -9,7 +9,7 @@ Minimum requirement of **NodeJS 10**. It can also be compiled using [Babel](http
 You can find full [API Documentation](docs/API.md) and [Testing instructions](docs/Testing.md).
 
 <a name="installation"></a>
-## [&#167;](#installation) Installation
+## Installation
 
 NPM:<br>
 `npm install @lytrax/everypay --save`<br><br>
@@ -46,7 +46,7 @@ process.env['EVERYPAY_SHARED_KEY'] = functions.config().everypay_sandbox_shared_
 ```
 
 <a name="usage"></a>
-## [&#167;](#usage) Usage
+## Usage
 
 ### [API Documentation](docs/API.md)
 
@@ -123,7 +123,7 @@ async function myFlow({
 ```
 
 <a name="testing"></a>
-## [&#167;](#testing) Testing
+## Testing
 
 ### [Testing instructions](docs/Testing.md)
 
@@ -133,7 +133,7 @@ All API bindings are fully tested:
 
 
 <a name="license"></a>
-## [&#167;](#license) License
+## License
 MIT License
 
 Copyright (c) Christos Lytras &lt;christos.lytras@gmail.com&gt; (lytrax.io)

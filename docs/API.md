@@ -26,7 +26,7 @@
 
 
 <a name="tokens"></a>
-## [&#167;](#tokens) Tokens
+## Tokens
 
 <a name="createToken"></a>
 [createToken](#createToken) (NamedParams: Object) : Promise&lt;[TokenObject](https://www.everypay.gr/api-reference/?shell#the-token-object)&gt;<br>
@@ -50,7 +50,7 @@
 
 
 <a name="customers"></a>
-## [&#167;](#customers) Customers
+## Customers
 
 <a name="createCustomer"></a>
 [createCustomer](#createCustomer) (NamedParams: Object) : Promise&lt;[CustomerObject](https://www.everypay.gr/api-reference/?shell#the-customer-object)&gt;<br>
@@ -126,7 +126,7 @@
 
 
 <a name="cards"></a>
-## [&#167;](#cards) Cards
+## Cards
 
 <a name="createCard"></a>
 [createCard](#createCard) (NamedParams: Object) : Promise&lt;[CardObject](https://www.everypay.gr/api-reference/?shell#the-card-object)&gt;<br>
@@ -183,7 +183,7 @@
 
 
 <a name="payments"></a>
-## [&#167;](#payments) Payments
+## Payments
 
 <a name="createPayment"></a>
 [createPayment](#createPayment) (NamedParams: Object) : Promise&lt;[PaymentObject](https://www.everypay.gr/api-reference/?shell#the-payment-object)&gt;<br>
@@ -262,7 +262,7 @@
 
 
 <a name="refunds"></a>
-## [&#167;](#refunds) Refunds
+## Refunds
 
 <a name="createRefund"></a>
 [createRefund](#createRefund) (NamedParams: Object) : Promise&lt;[RefundObject](https://www.everypay.gr/api-reference/?shell#the-refund-object)&gt;<br>
