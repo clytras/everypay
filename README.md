@@ -2,11 +2,14 @@
 
 This is an **UNOFFICIAL** Javascript ES6 library for binding [EveryPay](https://www.everypay.gr/) payments gateway [REST API](https://www.everypay.gr/api-reference/). **By using this software you agree that the author has no responsibility of any issues, bugs, malfunctions or side-effects that may occur by using any piece of code included in this library**.
 
-This library is for server side usage. **You must NEVER use or expose Private Key in client side**. The only functions that can be used in client side using a Public Key, are when you need to create / retreive a token using `createToken` / `retreiveToken`.
+This library is for server side usage. **You must NEVER use or expose Private Key in client side**. The only functions that can be used in client side using a **Public Key**, are when you need to create / retreive a token using `createToken` / `retreiveToken`.
 
-Minimum requirement of **NodeJS 10**. It can also be compiled using [Babel](https://babeljs.io/) or directly use in [React Native](https://facebook.github.io/react-native/). It utilizes the `fetch` [Web API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and uses `window.fetch` for Web, `global.fetch` for React Native, [`node-fetch`](https://www.npmjs.com/package/node-fetch) for NodeJS.
+Minimum requirement of **NodeJS 10**. It can also be compiled using [Babel](https://babeljs.io/) or directly use in [React Native](https://facebook.github.io/react-native/). It utilizes the `fetch` [Web API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and uses `window.fetch` for Web, `global.fetch` for React Native, [`node-fetch`](https://www.npmjs.com/package/node-fetch) for NodeJS or fallback if there is no native `fetch` support.
 
-## Instalation
+You can find full [API Documentation](docs/API.md) and [Testing instructions](docs/Testing.md).
+
+<a name="installation"></a>
+## [&#167;](#installation) Installation
 
 NPM:<br>
 `npm install @lytrax/everypay --save`<br><br>
@@ -15,7 +18,7 @@ Yarn:<br>
 
 ### API Keys
 
-Use enviroment variables to setup your gateway account credentials. There is an `.env.example` file you can check and rename. You can use [`dotenv`](https://www.npmjs.com/package/dotenv) package to auto load project root `.env` files. The library expects the folowing enviroment variables:
+Use enviroment variables to setup your gateway account credentials. There is an `.env.example` file you can check and copy. You can use [`dotenv`](https://www.npmjs.com/package/dotenv) package to auto load project root `.env` files. The library expects the following environment variables to be present:
 
 ```bash
 EVERYPAY_APIENDPOINT="https://sandbox-api.everypay.gr"
@@ -42,11 +45,14 @@ process.env['EVERYPAY_PRIVATE_KEY'] = functions.config().everypay_sandbox_privat
 process.env['EVERYPAY_SHARED_KEY'] = functions.config().everypay_sandbox_shared_key;
 ```
 
-## Usage
+<a name="usage"></a>
+## [&#167;](#usage) Usage
+
+### [API Documentation](docs/API.md)
 
 Every function returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) than can be either success with a result or fail with an error. When it fails, if the error contains an `endPointError` property, then that reflects an error at the gateway endpoint. You can find the endpoint error structure at the [EveryPay API Reference Errors](https://www.everypay.gr/api-reference/#errors).
 
-Every function can take an optional custom endpoint URL and/or endpoint key to use. When these parameters are omitted, default enviroment variables used for all keys. This can be usefull when creating tokens at the client and we receive the public key dynamically:
+Every function can take an optional custom endpoint URL and/or endpoint key to use. When these parameters are omitted, default enviroment variables are used for all keys and endpoint URL. This can be usefull when creating tokens at the client and we receive the public key dynamically:
 
 ```Js
 createToken({
@@ -115,3 +121,25 @@ async function myFlow({
   }
 }
 ```
+
+<a name="testing"></a>
+## [&#167;](#testing) Testing
+
+### [Testing instructions](docs/Testing.md)
+
+All API bindings are fully tested:
+
+![EveryPay JS API All Tests Passed](docs/EveryPay_JS_API_AllTestsPassed.png)
+
+
+<a name="license"></a>
+## [&#167;](#license) License
+MIT License
+
+Copyright (c) Christos Lytras &lt;christos.lytras@gmail.com&gt; (lytrax.io)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
