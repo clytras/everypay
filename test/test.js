@@ -46,7 +46,7 @@ const {
 } = require('../src/Refunds');
 
 
-// Check enviroment variables gateway credentials
+// Check environment variables gateway credentials
 before(function() {
   let envVarsNotFound = 0;
   const EnvVars = [
@@ -66,10 +66,10 @@ before(function() {
   })
 
   if(envVarsNotFound > 0) {
-    console.error(`\n  Not all EveryPay enviroment credentials found; Skipping tests\n`.red);
+    console.error(`\n  Not all EveryPay environment credentials found; Skipping tests\n`.red);
     this.skip();
   } else {
-    console.log(`\n  All EveryPay enviroment credentials found\n`.cyan);
+    console.log(`\n  All EveryPay environment credentials found\n`.cyan);
     this.timeout(5000);
   }
 });

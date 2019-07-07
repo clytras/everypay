@@ -18,7 +18,7 @@ Yarn:<br>
 
 ### API Keys
 
-Use enviroment variables to setup your gateway account credentials. There is an `.env.example` file you can check and copy. You can use [`dotenv`](https://www.npmjs.com/package/dotenv) package to auto load project root `.env` files. The library expects the following environment variables to be present:
+Use environment variables to setup your gateway account credentials. There is an `.env.example` file you can check and copy. You can use [`dotenv`](https://www.npmjs.com/package/dotenv) package to auto load project root `.env` files. The library expects the following environment variables to be present:
 
 ```bash
 EVERYPAY_APIENDPOINT="https://sandbox-api.everypay.gr"
@@ -27,7 +27,7 @@ EVERYPAY_PRIVATE_KEY="sk_..."
 EVERYPAY_SHARED_KEY="sh_..."
 ```
 
-For [Firebase](https://firebase.google.com/), you can use [Firebase CLI](https://firebase.google.com/docs/cli/#functions-commands) to set enviroment configuration:
+For [Firebase](https://firebase.google.com/), you can use [Firebase CLI](https://firebase.google.com/docs/cli/#functions-commands) to set environment configuration:
 
 ```
 firebase functions:config:set \
@@ -36,7 +36,7 @@ everypay_sandbox_private_key="sk_..." \
 everypay_sandbox_shared_key="sh_..."
 ```
 
-and then use functions config to initialize node process enviroment variables:
+and then use functions config to initialize node process environment variables:
 
 ```js
 process.env['EVERYPAY_APIENDPOINT'] = 'https://sandbox-api.everypay.gr';
@@ -50,15 +50,15 @@ process.env['EVERYPAY_SHARED_KEY'] = functions.config().everypay_sandbox_shared_
 
 ### [API Documentation](docs/API.md)
 
-Every function returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) than can be either success with a result or fail with an error. When it fails, if the error contains an `endPointError` property, then that reflects an error at the gateway endpoint. You can find the endpoint error structure at the [EveryPay API Reference Errors](https://www.everypay.gr/api-reference/#errors).
+Every function returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that can be either success with a result or fail with an error. When it fails, if the error contains an `endPointError` property, then that reflects an error at the gateway endpoint. You can find the endpoint error structure at the [EveryPay API Reference Errors](https://www.everypay.gr/api-reference/#errors).
 
-Every function can take an optional custom endpoint URL and/or endpoint key to use. When these parameters are omitted, default enviroment variables are used for all keys and endpoint URL. This can be usefull when creating tokens at the client and we receive the public key dynamically:
+Every function can take an optional custom endpoint URL and/or endpoint key to use. When these parameters are omitted, default environment variables are used for all keys and endpoint URL. This can be usefull when creating tokens at the client and we receive the public key dynamically:
 
 ```Js
 createToken({
-  // Will use EVERYPAY_APIENDPOINT enviroment variable when omitted
+  // Will use EVERYPAY_APIENDPOINT environment variable when omitted
   endPointURL: 'https://api.everypay.gr',
-  // Will use EVERYPAY_PUBLIC_KEY enviroment variable when omitted
+  // Will use EVERYPAY_PUBLIC_KEY environment variable when omitted
   endPointKey: 'pk_...',
   ...
 })
