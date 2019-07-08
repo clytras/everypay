@@ -5,16 +5,16 @@
   "main": "src/index.js",
   "scripts": {
     "test": "mocha || true",
-    "test-result": "mocha"
+    "test-result": "mocha",
+    "build": "webpack",
+    "deploy": "np"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/clytras/everypay.git"
   },
   "files": [
-    "src/",
-    "docs/",
-    ".env.example"
+    "dist/*"
   ],
   "keywords": [
     "everypay",
@@ -40,8 +40,11 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "colors": "^1.3.3",
+    "copy-webpack-plugin": "^5.0.3",
     "dotenv": "^8.0.0",
     "faker": "^4.1.0",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5"
   }
 }
