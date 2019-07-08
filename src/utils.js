@@ -58,7 +58,7 @@ exports.endPointCall = ({
       endPointURL,
       endPointKey,
       method
-    })
+    });
 
     if(entity) {
       uri = `${uri}/${entity}`;
