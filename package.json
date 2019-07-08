@@ -1,6 +1,6 @@
 {
   "name": "@lytrax/everypay",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "EveryPay payment gateway REST API adapter for JavaScript/NodeJS",
   "main": "src/index.js",
   "scripts": {
