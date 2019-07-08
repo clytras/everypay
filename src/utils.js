@@ -1,5 +1,5 @@
 const nodeFetch = require('node-fetch');
-const btoa = require('btoa');
+const { encode: nodeBtoa } = require('base-64');
 const qs = require('qs');
 const formURLEncoded = require('form-urlencoded').default;
 
@@ -30,7 +30,12 @@ function initAPIEndPoint({
       break;
   }
 
-  const endPointAuth = btoa(`${key}:`);
+  const useBtoa = 
+  (typeof(window) !== 'undefined' && window.btoa) || 
+  (typeof(global) !== 'undefined' && global.btoa) || 
+  nodeBtoa;
+
+  const endPointAuth = useBtoa(`${key}:`);
 
   return {
     uri,

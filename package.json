@@ -1,6 +1,6 @@
 {
   "name": "@lytrax/everypay",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "EveryPay payment gateway REST API adapter for JavaScript/NodeJS",
   "main": "src/index.js",
   "scripts": {
@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/clytras/everypay#readme",
   "dependencies": {
-    "btoa": "^1.2.1",
+    "base-64": "^0.1.0",
     "form-urlencoded": "^3.0.1",
     "node-fetch": "^2.6.0",
     "qs": "^6.7.0"
