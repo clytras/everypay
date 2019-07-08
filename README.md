@@ -67,7 +67,9 @@ createToken({
 ### Create token example
 
 ```javascript
-import { createToken } from '@lytrax/everypay/Tokens';
+const { createToken } = require('@lytrax/everypay/Tokens');
+// Or ES6 import
+// import { createToken } from '@lytrax/everypay/Tokens';
 
 // This should be called at the client
 
@@ -94,7 +96,9 @@ createToken({
 ### Create customer using token example (using async/await)
 
 ```javascript
-import { createCustomer } from '@lytrax/everypay/Customers';
+const { createCustomer } = require('@lytrax/everypay/Customers');
+// Or ES6 import
+// import { createCustomer } from '@lytrax/everypay/Customers';
 
 async function myFlow({
   tokenId: token,
@@ -136,7 +140,7 @@ All API bindings are fully tested:
 ## License
 MIT License
 
-Copyright (c) Christos Lytras &lt;christos.lytras@gmail.com&gt; (lytrax.io)
+Copyright (c) Christos Lytras &lt;christos.lytras@gmail.com&gt; ([lytrax.io](https://lytrax.io))
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

@@ -9,7 +9,7 @@ We use [Mocha](https://mochajs.org/) test framework and [Chai](https://www.chaij
 To run the tests, you first have to clone the repo:
 
 ```
-git clone https://github.com/clytras/everypay.git && cd everypay
+git clone https://github.com/clytras/everypay.git & cd everypay
 ```
 
 Then install all dependencies by running `npm install` or `yarn` to the project root directory.
