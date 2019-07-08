@@ -1,21 +1,19 @@
 {
   "name": "@lytrax/everypay",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "EveryPay payment gateway REST API adapter for JavaScript/NodeJS",
   "main": "src/index.js",
   "scripts": {
     "test": "mocha || true",
     "test-result": "mocha",
-    "build": "webpack",
-    "deploy": "np"
+    "build": "node ./scripts/build.js",
+    "deploy": "yarpm run build && cd ./dist && npm publish --access-public && cd ..",
+    "deploy-dry": "yarpm run build && cd ./dist && npm publish --access-public --dry-run && cd .."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/clytras/everypay.git"
   },
-  "files": [
-    "dist/*"
-  ],
   "keywords": [
     "everypay",
     "payments",
@@ -40,11 +38,11 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "colors": "^1.3.3",
-    "copy-webpack-plugin": "^5.0.3",
+    "copy-dir": "^1.1.0",
     "dotenv": "^8.0.0",
     "faker": "^4.1.0",
+    "fs-extra": "^8.1.0",
     "mocha": "^6.1.4",
-    "webpack": "^4.35.2",
-    "webpack-cli": "^3.3.5"
+    "yarpm": "^0.2.1"
   }
 }
