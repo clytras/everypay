@@ -4,7 +4,7 @@ We use [Mocha](https://mochajs.org/) test framework, [Chai](https://www.chaijs.c
 
 **WARNING**: Run tests only in the sandbox environment (https://sandbox-api.everypay.gr)
 
-**WARNING**: The tests will create users/cards/payments to the sandbox environment that API keys belongs to.
+**WARNING**: The tests will create users/cards/payments to the sandbox environment that API keys belong to.
 
 To run the tests, you first have to clone the repo:
 

@@ -106,7 +106,7 @@ describe('Tokens', function() {
         is_used: false,
         has_expired: false
       });
-      expect(token).to.have.property('token').match(/^ctn_/, 'card token id seems valid');
+      expect(token).to.have.property('token').match(/^ctn_/, 'card token id is invalid');
       'token' in token && (createdTokenId = token.token);
     });
   });
