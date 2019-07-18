@@ -3,16 +3,11 @@ const { encode: nodeBtoa } = require('base-64');
 const qs = require('qs');
 const formURLEncoded = require('form-urlencoded').default;
 
-
-function initAPIEndPoint({
-  endPointURL,
-  endPointKey,
-  method
-}) {
+function initAPIEndPoint({ endPointURL, endPointKey, method }) {
   const uri = endPointURL || process.env.EVERYPAY_APIENDPOINT;
   let key;
 
-  switch(endPointKey) {
+  switch (endPointKey) {
     case 'public':
     case 'pk':
       key = process.env.EVERYPAY_PUBLIC_KEY;
@@ -30,10 +25,10 @@ function initAPIEndPoint({
       break;
   }
 
-  const useBtoa = 
-  (typeof(window) !== 'undefined' && window.btoa) || 
-  (typeof(global) !== 'undefined' && global.btoa) || 
-  nodeBtoa;
+  const useBtoa =
+    (typeof window !== 'undefined' && window.btoa) ||
+    (typeof global !== 'undefined' && global.btoa) ||
+    nodeBtoa;
 
   const endPointAuth = useBtoa(`${key}:`);
 
@@ -42,72 +37,79 @@ function initAPIEndPoint({
     params: {
       method,
       headers: {
-        'Authorization': `Basic ${endPointAuth}`
+        Authorization: `Basic ${endPointAuth}`
       }
     }
-  }
+  };
 }
+// eslint-disable-next-line
+exports.endPointCall = ({ data, endPointKey, endPointURL, entity, method = 'GET' }) =>
+  new Promise((resolve, reject) =>
+    Promise.resolve().then(() => {
+      const Debug = process.env.NODE_ENV === 'development' || process.env.EVERYPAY_DEBUG;
+      // eslint-disable-next-line
+      let { uri, params } = initAPIEndPoint({
+        endPointURL,
+        endPointKey,
+        method
+      });
 
-exports.endPointCall = ({
-  endPointURL,
-  endPointKey,
-  method = 'GET',
-  entity,
-  data
-}) => {
-  return new Promise((resolve, reject) => Promise.resolve().then(() => {
-    const Debug = process.env.NODE_ENV === 'development' || process.env.EVERYPAY_DEBUG;
+      if (entity) {
+        uri = `${uri}/${entity}`;
+      }
 
-    let { uri, params } = initAPIEndPoint({
-      endPointURL,
-      endPointKey,
-      method
-    });
+      if (data) {
+        if (method === 'GET') {
+          uri = `${uri}?${qs.stringify(data)}`;
+        } else {
+          // POST PUT DELETE
+          params.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+          let dataCound = 0;
+          // eslint-disable-next-line
+          for (const prop in data) {
+            const value = data[prop];
+            if (value === undefined) {
+              delete data[prop];
+            } else {
+              dataCound++;
+            }
+          }
 
-    if(entity) {
-      uri = `${uri}/${entity}`;
-    }
-
-    if(data) {
-      if(method == 'GET') {
-        uri = `${uri}?${qs.stringify(data)}`;
-      } else { // POST PUT DELETE
-        params.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-        let dataCound = 0;
-
-        for(let prop in data) {
-          const value = data[prop];
-          if(value === undefined) {
-            delete data[prop];
-          } else {
-            dataCound++;
+          if (dataCound > 0) {
+            params.body = formURLEncoded(data);
           }
         }
-
-        if(dataCound > 0) {
-          params.body = formURLEncoded(data);
-        }
       }
-    }
 
-    const useFetch = 
-      (typeof(window) !== 'undefined' && window.fetch) || 
-      (typeof(global) !== 'undefined' && global.fetch) || 
-      nodeFetch;
+      const useFetch =
+        (typeof window !== 'undefined' && window.fetch) ||
+        (typeof global !== 'undefined' && global.fetch) ||
+        nodeFetch;
 
-    useFetch(uri, params)
-    .then(res => res.json())
-    .then(resData => {
-      Debug && console.log('[EveryPay::endPointCall] Responce', JSON.stringify(resData, null, 2));
-      if(resData && 'error' in resData) {
-        reject({ endPointError: resData.error});
-      } else {
-        resolve(resData);
-      }
+      useFetch(uri, params)
+        .then((res) => res.json())
+        .then((resData) => {
+          if (Debug) {
+            console.log(
+              '[EveryPay::endPointCall] Response',
+              JSON.stringify(resData, null, 2)
+            );
+          }
+          if (resData && 'error' in resData) {
+            const error = { endPointError: resData.error };
+            reject(error);
+          } else {
+            resolve(resData);
+          }
+        })
+        .catch((error) => {
+          if (Debug) {
+            console.error(
+              '[EveryPay::endPointCall] Error',
+              JSON.stringify(error, null, 2)
+            );
+          }
+          reject(error);
+        });
     })
-    .catch(error => {
-      Debug && console.error('[EveryPay::endPointCall] Error', JSON.stringify(error, null, 2));
-      reject(error);
-    });
-  }));
-}
+  );

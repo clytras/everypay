@@ -1,32 +1,29 @@
 const { endPointCall } = require('./utils');
 
-
 exports.createToken = ({
   endPointURL,
   endPointKey = 'public',
-  ...data /* = {
-    card_number,
-    expiration_year,
-    expiration_month,
-    cvv,
-    holder_name,
-    amount
+  ...data
+  /* = {
+      card_number, // Card number without any separators.
+      cvv, // The 3 or 4 digits security code of the card.
+      expiration_month, // Card expiration month (2 digits)
+      expiration_year, // Card expiration year (4 digits)
+      holder_name // Cardholder’s name
   } */
-}) => endPointCall({
-  method: 'POST',
-  endPointURL,
-  endPointKey,
-  entity: `tokens`,
-  data
-});
+}) =>
+  endPointCall({
+    data,
+    endPointKey,
+    endPointURL,
+    entity: `tokens`,
+    method: 'POST'
+  });
 
-exports.retrieveToken = ({
-  endPointURL,
-  endPointKey = 'public',
-  tokenId
-}) => endPointCall({
-  method: 'GET',
-  endPointURL,
-  endPointKey,
-  entity: `tokens/${tokenId}`
-});
+exports.retrieveToken = ({ endPointKey = 'public', endPointURL, tokenId }) =>
+  endPointCall({
+    endPointKey,
+    endPointURL,
+    entity: `tokens/${tokenId}`,
+    method: 'GET'
+  });

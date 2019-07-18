@@ -1,6 +1,6 @@
 {
   "name": "@lytrax/everypay",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "EveryPay payment gateway REST API adapter for JavaScript/NodeJS",
   "main": "src/index.js",
   "scripts": {
@@ -8,7 +8,10 @@
     "test-result": "mocha",
     "build": "node ./scripts/build.js",
     "deploy": "yarpm run build && cd ./dist && npm publish --access-public && cd ..",
-    "deploy-dry": "yarpm run build && cd ./dist && npm publish --access-public --dry-run && cd .."
+    "deploy-dry": "yarpm run build && cd ./dist && npm publish --access-public --dry-run && cd ..",
+    "prettier": "prettier \"**/*.{json,md,scss,yaml,yml,js}\" --write",
+    "lint": "eslint ./ --ignore-path .gitignore --ignore-pattern internals/scripts --fix",
+    "lint:fix": "npm run lint --fix"
   },
   "repository": {
     "type": "git",
@@ -43,6 +46,30 @@
     "faker": "^4.1.0",
     "fs-extra": "^8.1.0",
     "mocha": "^6.1.4",
-    "yarpm": "^0.2.1"
+    "yarpm": "^0.2.1",
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-prettier": "3.1.0",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.2.0",
+    "prettier": "^1.18.2",
+    "supports-color": "^7.0.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,md,scss,yaml,yml,js}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

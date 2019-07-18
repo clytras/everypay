@@ -9,6 +9,7 @@ Minimum requirement of **NodeJS 10**. It can also be compiled using [Babel](http
 You can find full [API Documentation](docs/API.md) and [Testing instructions](docs/Testing.md).
 
 <a name="installation"></a>
+
 ## Installation
 
 NPM:<br>
@@ -46,6 +47,7 @@ process.env['EVERYPAY_SHARED_KEY'] = functions.config().everypay_sandbox_shared_
 ```
 
 <a name="usage"></a>
+
 ## Usage
 
 ### [API Documentation](docs/API.md)
@@ -80,17 +82,17 @@ createToken({
   cvv: '343',
   holder_name: 'John Doe'
 })
-.then(token => {
-  // Success: Store or use the token
-  // ...
-})
-.catch(error => {
-  if('endPointError' in error) {
-    // Handle EveryPay API error
-  } else {
-    // Handle other code error
-  }
-});
+  .then((token) => {
+    // Success: Store or use the token
+    // ...
+  })
+  .catch((error) => {
+    if ('endPointError' in error) {
+      // Handle EveryPay API error
+    } else {
+      // Handle other code error
+    }
+  });
 ```
 
 ### Create customer using token example (using async/await)
@@ -116,8 +118,8 @@ async function myFlow({
 
     // Success: Use the customer object
     // ...
-  } catch(error) {
-    if('endPointError' in error) {
+  } catch (error) {
+    if ('endPointError' in error) {
       // Handle EveryPay API error
     } else {
       // Handle other code error
@@ -127,6 +129,7 @@ async function myFlow({
 ```
 
 <a name="testing"></a>
+
 ## Testing
 
 ### [Testing instructions](docs/Testing.md)
@@ -135,9 +138,10 @@ All API bindings are fully tested:
 
 ![EveryPay JS API All Tests Passed](docs/EveryPay_JS_API_AllTestsPassed.png)
 
-
 <a name="license"></a>
+
 ## License
+
 MIT License
 
 Copyright (c) Christos Lytras &lt;christos.lytras@gmail.com&gt; ([lytrax.io](https://lytrax.io))
