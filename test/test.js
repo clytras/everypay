@@ -1,5 +1,6 @@
 /* eslint-disable */
 require('dotenv').config();
+require('colors');
 const { expect } = require('chai');
 const faker = require('faker');
 const { Cards } = require('./helpers/TestCards');
