@@ -1,65 +1,61 @@
 const { endPointCall } = require('./utils');
 
-
 exports.createCard = ({
   endPointURL,
   endPointKey = 'secret',
   customerId,
-  ...data /* = {
-    card_number,
-    expiration_year,
-    expiration_month,
-    holder_name,
-
-    token,
-    default_card
+  ...data
+  /* = {
+    card_number, // optional (only used if creating with card arguments)
+    default_card, // optional (default: 0)
+    expiration_month, optional (only used if creating with card arguments)
+    expiration_year, // optional (only used if creating with card arguments)
+    holder_name, // optional (only used if creating with card arguments)
+    token // optional
   } */
-}) => endPointCall({
-  method: 'POST',
-  endPointURL,
-  endPointKey,
-  entity: `customers/${customerId}/cards`,
-  data
-});
+}) =>
+  endPointCall({
+    data,
+    endPointKey,
+    endPointURL,
+    entity: `customers/${customerId}/cards`,
+    method: 'POST'
+  });
 
-exports.retrieveCard = ({
-  endPointURL,
-  endPointKey = 'secret',
-  customerId,
-  cardId
-}) => endPointCall({
-  method: 'GET',
-  endPointURL,
-  endPointKey,
-  entity: `customers/${customerId}/cards/${cardId}`
-});
+// eslint-disable-next-line
+exports.retrieveCard = ({ cardId, customerId, endPointKey = 'secret', endPointURL }) =>
+  endPointCall({
+    endPointKey,
+    endPointURL,
+    entity: `customers/${customerId}/cards/${cardId}`,
+    method: 'GET'
+  });
 
-exports.deleteCard = ({
-  endPointURL,
-  endPointKey = 'secret',
-  customerId,
-  cardId
-}) => endPointCall({
-  method: 'DELETE',
-  endPointURL,
-  endPointKey,
-  entity: `customers/${customerId}/cards/${cardId}`
-});
+// eslint-disable-next-line
+exports.deleteCard = ({ cardId, customerId, endPointKey = 'secret', endPointURL }) =>
+  endPointCall({
+    endPointKey,
+    endPointURL,
+    entity: `customers/${customerId}/cards/${cardId}`,
+    method: 'DELETE'
+  });
 
 exports.listCards = ({
-  endPointURL,
-  endPointKey = 'secret',
   customerId,
-  ...data /* = {
-    count, // default: 10, max: 20
-    offset,
-    date_from,
-    date_to
-  } */
-}) => endPointCall({
-  method: 'GET',
+  endPointKey = 'secret',
   endPointURL,
-  endPointKey,
-  entity: `customers/${customerId}/cards`,
-  data
-});
+  ...data
+  /* = {
+    count // optional (default: 10, max: 20)
+    date_from, // optional
+    date_to // optional
+    offset, // optional (default: 0)
+  } */
+}) =>
+  endPointCall({
+    data,
+    endPointKey,
+    endPointURL,
+    entity: `customers/${customerId}/cards`,
+    method: 'GET'
+  });

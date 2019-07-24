@@ -1,4 +1,4 @@
-const fs = require('fs');
+/* eslint-disable */
 const path = require('path');
 const fse = require('fs-extra');
 const copydir = require('copy-dir');
@@ -18,6 +18,6 @@ fse.copyFileSync(path.resolve(root, '.env.example'), path.resolve(dist, '.env.ex
 fse.copyFileSync(path.resolve(root, 'LICENSE'), path.resolve(dist, 'LICENSE'));
 fse.copyFileSync(path.resolve(root, 'README.md'), path.resolve(dist, 'README.md'));
 
-let package = fse.readJsonSync(path.resolve(__dirname, '../package.json'));
-package.main = 'index.js';
-fse.writeJSONSync(path.resolve(dist, 'package.json'), package, { spaces: 2 });
+const pkg = fse.readJsonSync(path.resolve(__dirname, '../package.json'));
+pkg.main = 'index.js';
+fse.writeJSONSync(path.resolve(dist, 'package.json'), pkg, { spaces: 2 });

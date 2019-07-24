@@ -1,0 +1,275 @@
+EveryPay errors
+
+"error": {
+  "status": 400,
+  "code": 20002,
+  "message": "Expiration month in the past or invalid."
+}
+
+"error": {
+  "status": 404,
+  "code": 30004,
+  "message": "Could not find customer with token: cus_WSGyNdTFvQDqjdqgtS66yGoP."
+}
+
+
+Customer create responseonse
+
+{
+  "card": {
+    "bin": "411111",
+    "customer": "cus_WSGyNdTFvQDqjdqgtS66yGoP",
+    "expiration_month": "05",
+    "expiration_year": "2022",
+    "friendly_name": "Visa •••• 1111 (05/2022)",
+    "holder_name": "John Doe",
+    "last_four": "1111",
+    "status": "valid",
+    "supports_installments": false,
+    "tds": {
+      "auth_code": null,
+      "auth_desc": null,
+      "eci_flag": null,
+      "enrolled": null
+    },
+    "token": "crd_sl3PJJnin3psY7BL3jT2I3T0",
+    "type": "Visa"
+  },
+  "cards": {
+    "count": 1,
+    "data": [
+      {
+        "bin": "411111",
+        "customer": "cus_WSGyNdTFvQDqjdqgtS66yGoP",
+        "expiration_month": "05",
+        "expiration_year": "2022",
+        "friendly_name": "Visa •••• 1111 (05/2022)",
+        "holder_name": "John Doe",
+        "last_four": "1111",
+        "status": "valid",
+        "supports_installments": false,
+        "tds": {
+          "auth_code": null,
+          "auth_desc": null,
+          "eci_flag": null,
+          "enrolled": null
+        },
+        "token": "crd_sl3PJJnin3psY7BL3jT2I3T0",
+        "type": "Visa"
+      }
+    ]
+  },
+  "date_created": "2019-07-01T18:28:13+0300",
+  "date_modified": "2019-07-01T18:28:13+0300",
+  "description": "Club Member",
+  "email": "customer@themail.com",
+  "full_name": "John Doe",
+  "is_active": true,
+  "token": "cus_WSGyNdTFvQDqjdqgtS66yGoP"
+}
+
+
+Customer delete response
+
+{
+  "date_created": "2019-07-01T22:30:17+0300",
+  "date_modified": "2019-07-01T22:31:03+0300",
+  "description": "The bottom member!",
+  "email": "vailakis@gmail.com",
+  "full_name": "Vasilakis Kailas",
+  "is_active": false,
+  "token": "cus_8hQ6IM397J5fLT7dWoDCPvqL"
+}
+
+Card create
+
+{
+  "bin": "455639",
+  "customer": "cus_DM1AgpvSlVXZ1nDdvIROE8rs",
+  "expiration_month": "07",
+  "expiration_year": "2023",
+  "friendly_name": "Visa •••• 9395 (07/2023)",
+  "holder_name": "CHRISTOS LITRAS",
+  "last_four": "9395",
+  "status": "valid",
+  "supports_installments": false,
+  "tds": {
+    "auth_code": null,
+    "auth_desc": null,
+    "eci_flag": null,
+    "enrolled": null
+  },
+  "token": "crd_u8EHBmvKMVppySdZDHoXfDPO",
+  "type": "Visa"
+}
+
+
+Card delete response
+
+{
+  "is_deleted": true,
+  "token": "crd_kLNuHQ4gExyS3UtBTQCXWRl7"
+}
+
+Card delete error
+
+"error": {
+  "status": 400,
+  "code": 30008,
+  "message": "Could not find card: 'crd_kLNuHQ4gExyS3UtBTQCXWRl7'"
+}
+
+"error": {
+  "status": 400,
+  "code": 30010,
+  "message": "Cannot delete customer's last card"
+}
+
+List cards
+
+{
+  "items": [
+    {
+      "is_deleted": true,
+      "token": "crd_kLNuHQ4gExyS3UtBTQCXWRl7"
+    },
+    {
+      "bin": "488813",
+      "customer": "cus_DM1AgpvSlVXZ1nDdvIROE8rs",
+      "expiration_month": "05",
+      "expiration_year": "2022",
+      "friendly_name": "Visa •••• 6730 (05/2022)",
+      "holder_name": "CHRISTOS LITRAS",
+      "last_four": "6730",
+      "status": "valid",
+      "supports_installments": false,
+      "tds": {
+        "auth_code": null,
+        "auth_desc": null,
+        "eci_flag": null,
+        "enrolled": null
+      },
+      "token": "crd_XrfTsLJBPAyowoJPAYqYEh6m",
+      "type": "Visa"
+    }
+  ],
+  "total_count": 2
+}
+
+
+Payment create
+
+{
+  "additional_amount": 0,
+  "amount": 713,
+  "card": {
+    "bin": "521792",
+    "customer": "cus_DM1AgpvSlVXZ1nDdvIROE8rs",
+    "expiration_month": "07",
+    "expiration_year": "2023",
+    "friendly_name": "MasterCard •••• 6273 (07/2023)",
+    "holder_name": "CHRISTOS LITRAS",
+    "last_four": "6273",
+    "status": "valid",
+    "supports_installments": false,
+    "tds": {
+      "auth_code": null,
+      "auth_desc": null,
+      "eci_flag": null,
+      "enrolled": null
+    },
+    "token": "crd_l7ezfx1gUNtYX1628CZICooA",
+    "type": "MasterCard"
+  },
+  "commission_amount": 0,
+  "currency": "EUR",
+  "customer": {
+    "card": {
+      "bin": "521792",
+      "customer": "cus_DM1AgpvSlVXZ1nDdvIROE8rs",
+      "expiration_month": "07",
+      "expiration_year": "2023",
+      "friendly_name": "MasterCard •••• 6273 (07/2023)",
+      "holder_name": "CHRISTOS LITRAS",
+      "last_four": "6273",
+      "status": "valid",
+      "supports_installments": false,
+      "tds": {
+        "auth_code": null,
+        "auth_desc": null,
+        "eci_flag": null,
+        "enrolled": null
+      },
+      "token": "crd_l7ezfx1gUNtYX1628CZICooA",
+      "type": "MasterCard"
+    },
+    "cards": {
+      "count": 2,
+      "data": [
+        {
+          "bin": "521792",
+          "customer": "cus_DM1AgpvSlVXZ1nDdvIROE8rs",
+          "expiration_month": "07",
+          "expiration_year": "2023",
+          "friendly_name": "MasterCard •••• 6273 (07/2023)",
+          "holder_name": "CHRISTOS LITRAS",
+          "last_four": "6273",
+          "status": "valid",
+          "supports_installments": false,
+          "tds": {
+            "auth_code": null,
+            "auth_desc": null,
+            "eci_flag": null,
+            "enrolled": null
+          },
+          "token": "crd_l7ezfx1gUNtYX1628CZICooA",
+          "type": "MasterCard"
+        },
+        {
+          "bin": "488813",
+          "customer": "cus_DM1AgpvSlVXZ1nDdvIROE8rs",
+          "expiration_month": "05",
+          "expiration_year": "2022",
+          "friendly_name": "Visa •••• 6730 (05/2022)",
+          "holder_name": "CHRISTOS LITRAS",
+          "last_four": "6730",
+          "status": "valid",
+          "supports_installments": false,
+          "tds": {
+            "auth_code": null,
+            "auth_desc": null,
+            "eci_flag": null,
+            "enrolled": null
+          },
+          "token": "crd_XrfTsLJBPAyowoJPAYqYEh6m",
+          "type": "Visa"
+        }
+      ]
+    },
+    "date_created": "2019-07-01T22:18:52+0300",
+    "date_modified": "2019-07-02T00:12:30+0300",
+    "description": "The top member!",
+    "email": "christos.lytras@gmail.com",
+    "full_name": "Christos LytraX",
+    "is_active": true,
+    "token": "cus_DM1AgpvSlVXZ1nDdvIROE8rs"
+  },
+  "date_created": "2019-07-02T00:12:30+0300",
+  "description": "Test 7.13 payment",
+  "fee_amount": 37,
+  "installments": [],
+  "installments_count": 0,
+  "is_settled": false,
+  "merchant_ref": "my_ref_id_2",
+  "payee_email": null,
+  "payee_phone": null,
+  "refund_amount": 0,
+  "refunded": false,
+  "refunds": [],
+  "split": false,
+  "status": "Captured",
+  "token": "pmt_AfcXB0STwtYCAJKa6ZhjtMar",
+  "transfer_amount": 0,
+  "transfers": []
+}
+

@@ -1,82 +1,82 @@
 const { endPointCall } = require('./utils');
 
-
 exports.createCustomer = ({
   endPointURL,
   endPointKey = 'secret',
-  ...data /* = {
-    card_number,
-    expiration_year,
-    expiration_month,
-    holder_name,
-
-    token,
-    description,
-    full_name,
-    email
+  ...data
+  /* = {
+    card_number, // optional (only used if creating with card arguments)
+    description, // optional
+    email, // optional
+    expiration_month, // optional (only used if creating with card arguments)
+    expiration_year, // optional (only used if creating with card arguments)
+    full_name, // optional
+    holder_name, // optional (only used if creating with card arguments)
+    token // optional
   } */
-}) => endPointCall({
-  method: 'POST',
-  endPointURL,
-  endPointKey,
-  entity: `customers`,
-  data
-});
+}) =>
+  endPointCall({
+    data,
+    endPointKey,
+    endPointURL,
+    entity: `customers`,
+    method: 'POST'
+  });
 
-exports.retrieveCustomer = ({
-  endPointURL,
-  endPointKey = 'secret',
-  customerId
-}) => endPointCall({
-  method: 'GET',
-  endPointURL,
-  endPointKey,
-  entity: `customers/${customerId}`,
-});
+exports.retrieveCustomer = ({ customerId, endPointKey = 'secret', endPointURL }) =>
+  endPointCall({
+    endPointKey,
+    endPointURL,
+    entity: `customers/${customerId}`,
+    method: 'GET'
+  });
 
 exports.updateCustomer = ({
-  endPointURL,
-  endPointKey = 'secret',
   customerId,
-  ...data /* = {
-    description,
-    full_name,
-    email,
-    card,
-    default_card
-  } */
-}) => endPointCall({
-  method: 'PUT',
-  endPointURL,
-  endPointKey,
-  entity: `customers/${customerId}`,
-  data
-});
-
-exports.deleteCustomer = ({
-  endPointURL,
   endPointKey = 'secret',
-  customerId
-}) => endPointCall({
-  method: 'DELETE',
   endPointURL,
-  endPointKey,
-  entity: `customers/${customerId}`,
-});
+  ...data
+  /* = {
+    card, // optional
+    customerId, // The unique Customer ID
+    default_card, // optional (default: 0)
+    description, // optional
+    email, // optional
+    full_name // optional
+    full_name, // optional,
+  } */
+}) =>
+  endPointCall({
+    data,
+    endPointKey,
+    endPointURL,
+    entity: `customers/${customerId}`,
+    method: 'PUT'
+  });
+
+exports.deleteCustomer = ({ customerId, endPointKey = 'secret', endPointURL }) =>
+  endPointCall({
+    endPointKey,
+    endPointURL,
+    entity: `customers/${customerId}`,
+    method: 'DELETE'
+  });
 
 exports.listCustomers = ({
-  endPointURL,
   endPointKey = 'secret',
-  ...data /* = {
-    count, // default: 10, max: 20
-    offset,
-    date_from,
-    date_to
-  } */
-} = {}) => endPointCall({
-  method: 'GET',
   endPointURL,
-  endPointKey,
-  entity: `customers`,
-  data
-});
+  ...data
+  /* = {
+    count, // optional(default: 10, max: 20)
+    date_from,  // optional
+    date_to, // optional
+    offset, // optional (default: 0)
+  } */
+} = {}) =>
+  endPointCall({
+    data,
+    endPointKey,
+    endPointURL,
+    entity: `customers`,
+    method: 'GET'
+  });

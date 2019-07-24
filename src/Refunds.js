@@ -1,47 +1,49 @@
 const { endPointCall } = require('./utils');
 
-
 exports.createRefund = ({
   endPointURL,
   endPointKey = 'secret',
-  ...data /* = {
-    payment,
-    amount,
-    description
+  ...data
+  /* = {
+    amount, // optional The amount (in cents) to refund. This must be less or
+               equal to current amount of payment that is being refunded. If no amount
+               is provided then the remaining amount of payment will be used.
+    description, // optional
+    payment // The Payment ID of the payment to refund.
   } */
-}) => endPointCall({
-  method: 'POST',
-  endPointURL,
-  endPointKey,
-  entity: `refunds`,
-  data
-});
+}) =>
+  endPointCall({
+    data,
+    endPointKey,
+    endPointURL,
+    entity: `refunds`,
+    method: 'POST'
+  });
 
-exports.retrieveRefund = ({
-  endPointURL,
-  endPointKey = 'secret',
-  refundId
-}) => endPointCall({
-  method: 'GET',
-  endPointURL,
-  endPointKey,
-  entity: `refunds/${refundId}`
-});
+exports.retrieveRefund = ({ endPointKey = 'secret', endPointURL, refundId }) =>
+  endPointCall({
+    endPointKey,
+    endPointURL,
+    entity: `refunds/${refundId}`,
+    method: 'GET'
+  });
 
 exports.listRefunds = ({
   endPointURL,
   endPointKey = 'secret',
-  ...data /* = {
-    count, // default: 10, max: 20
-    offset,
-    date_from,
-    date_to,
-    payment
+  ...data
+  /* = {
+    count, // optional(default: 10, max: 20)
+    date_from, // optional
+    date_to, // optional
+    offset, optional(default: 0)
+    payment // Provide the Payment ID to fetch refunds only for the specified payment
   } */
-} = {}) => endPointCall({
-  method: 'GET',
-  endPointURL,
-  endPointKey,
-  entity: `refunds`,
-  data
-});
+} = {}) =>
+  endPointCall({
+    data,
+    endPointKey,
+    endPointURL,
+    entity: `refunds`,
+    method: 'GET'
+  });
