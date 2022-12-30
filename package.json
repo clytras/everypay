@@ -45,7 +45,7 @@
     "dotenv": "^8.0.0",
     "faker": "^4.1.0",
     "fs-extra": "^8.1.0",
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "yarpm": "^0.2.1",
     "eslint": "^6.0.1",
     "eslint-config-airbnb-base": "^13.2.0",
